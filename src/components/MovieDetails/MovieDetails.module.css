@@ -1,0 +1,73 @@
+.movieDetails_container{
+    min-height: calc(100vh - 70px);
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.movieDetails{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.details{
+    max-width: 500px;
+    height: 375px;
+    /* outline: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.comments{
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    /* outline: 1px solid red; */
+    gap: 20px 0;
+}
+
+.input_comment{
+    height: 30px;
+    width: 650px;
+}
+
+.titleComments{
+    margin-left: 50px;
+}
+
+.form{
+    /* outline: 1px solid blue; */
+    margin-left: 50px;
+}
+
+.review{
+    width: 100%;
+    min-height: 300px;
+    /* outline: 1px solid violet; */
+}
+
+.containReview{
+    height: 60px;
+    /* outline: 1px solid blue; */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.imgUser{
+    margin-left: 50px;
+}

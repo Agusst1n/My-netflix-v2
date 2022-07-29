@@ -1,0 +1,45 @@
+.movies_container{
+    min-height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    /* padding: 40px 0; */
+    margin: 90px 50px 0 50px;
+}
+.movie_header{
+    height: calc(100vh - 70px);
+    object-fit: cover;
+    overflow: hidden;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.description{
+    position: absolute;
+    width: 520px;
+    height: 400px;
+    /* outline: 1px solid red; */
+    top: 130px;
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px 0;
+}
+
+.movie_info{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+.button_play{
+    background-color: rgb(203, 32, 32);
+    border-radius: 2px;
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    text-transform: uppercase;
+    margin-left: 10px;
+}

@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.home{
+    /* outline: 1px solid red; */
+    height: calc(100vh - 70px);
+    width: 100%;
+    background-image: url('../../assets/images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.description{
+    position: absolute;
+    width: 520px;
+    /* outline: 1px solid red; */
+    top: 130px;
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px 0;
+}
+.movie_info{
+    display: flex;
+    flex-direction: column;
+}
+.button_play{
+    background-color: rgb(203, 32, 32);
+    border-radius: 2px;
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    text-transform: uppercase;
+}

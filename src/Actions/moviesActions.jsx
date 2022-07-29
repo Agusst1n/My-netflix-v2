@@ -1,0 +1,7 @@
+export const TYPES = {
+
+    ADD_REVIEW:"ADD_REVIEW",
+    EDIT_REVIEW:"EDIT_REVIEW",
+    REMOVE_REVIEW:"ADD_REVIEW"
+    
+}
