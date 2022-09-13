@@ -3,6 +3,7 @@
     height: 70px;
     display: flex;
     /* outline: 1px solid red; */
+    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -49,4 +50,21 @@
 
 .navbar_item a:hover{
     color: rgba(255, 255, 255, 0.821);
+}
+
+.account_links_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-right: 10px;
+}
+
+.account_links{
+    text-decoration: none;
+    color: white;
+}
+
+.account_links:hover{
+    color: rgba(255, 255, 255, 0.849);
 }

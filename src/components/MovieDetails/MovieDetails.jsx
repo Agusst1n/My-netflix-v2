@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import MoviesContext from '../../context/MovieContext'
 
 import iconUser from '../../assets/images/iconUser.png'
 
 import styles from './MovieDetails.module.css'
+import AuthenticationContext from '../../context/AuthenticationContext'
 
 const MovieDetails = () => {
+
+  const location = useLocation()
+  const {id} = useParams()
+
+  const {movies,reviews,setReviews} = useContext(MoviesContext)
+  const {setInHome} = useContext(AuthenticationContext)
 
   const [load, setLoad] = useState(false)
   const [movieActual, setMovieActual] = useState([])
@@ -15,8 +22,6 @@ const MovieDetails = () => {
 
 
 
-  const {id} = useParams()
-  const {movies,reviews,setReviews} = useContext(MoviesContext)
 
   const getById = () =>{
     const movieActual = movies?.filter(movie=> movie.id == id)
@@ -32,6 +37,10 @@ const MovieDetails = () => {
     
     getById()
     getReview()
+    if(location.pathname.includes('/details')){
+      setInHome(true)
+      console.log(location, 'location');
+    }
 
   }, [movies, reviews])
   

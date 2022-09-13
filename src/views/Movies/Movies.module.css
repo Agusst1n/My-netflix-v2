@@ -1,12 +1,26 @@
 .movies_container{
+    position: relative;
     min-height: calc(100vh - 70px);
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 35px;
     /* padding: 40px 0; */
+}
+.movies_container_title{
+    position: absolute;
+    top: 20px;
+    left: 60px;
+    color: rgba(255, 255, 255, 0.835);
+}
+.movies{
+    width: 100%;
+    height: 100%;
     margin: 90px 50px 0 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 .movie_header{
     height: calc(100vh - 70px);

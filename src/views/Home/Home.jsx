@@ -4,11 +4,16 @@ import mulan from '../../assets/images/name.png'
 import { useEffect } from 'react'
 
 //Router dom
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useLocation} from 'react-router-dom'
+import { useContext } from 'react'
+import AuthenticationContext from '../../context/AuthenticationContext'
 
 const Home = () => {
 
+  const {setInHome} = useContext(AuthenticationContext)
+
   const navigate = useNavigate()
+  const location = useLocation()
 
 
   useEffect(()=>{
@@ -16,6 +21,12 @@ const Home = () => {
       console.log('no user');
       navigate('/')
       return
+    }else{
+  
+      if(location.pathname.includes('/home')){
+        setInHome(true)
+        console.log(location, 'location');
+      }
     }
   },[])
 
@@ -24,8 +35,8 @@ const Home = () => {
         <div className={styles.description}>
           <img src={mulan} alt="" width={270}/>
           <div className={styles.movie_info}>
-            <pre>2020 | 12+ | 1h 55 min | Action </pre>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus officia praesentium culpa beatae earum ipsam error quibusdam molestias eaque, laudantium, porro atque, iste esse assumenda aliquam nesciunt. Ex, sed dicta.</p>
+            <pre>2020 | 12+ | Action/Fantasy | 1h 55m </pre>
+            <p>To keep her ailing father from serving in the Imperial Army, a fearless young woman disguises herself as a man and battles northern invaders in China.</p>
           </div>
           <div className={styles.buttons_container}>
               <button className={styles.button_play}><ion-icon name="play"></ion-icon> Play</button>
