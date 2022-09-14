@@ -26,6 +26,8 @@ const MoviesProvider = ({ children }) => {
 
     const favs = []
 
+    const [pushingFav, setPushingFav] = useState(false)
+
     const API_KEY = `api_key=3d9d528c10bd10aab1dcbcd5f1f8f9bf`;
 
     //La URL Dinamica, si el usuario escribio algo en el input de busqueda se va a usar el estado searchMovie y si esta vacio osea el usuario no escribio nada, se hace un fetch a la api trayendo las peliculas mas populares del momento
@@ -34,6 +36,9 @@ const MoviesProvider = ({ children }) => {
 
     const getData = async () => {
       try {
+
+        setLoading(true)
+
         const res = await fetch(
           `${SearchUrl}`
         );
@@ -42,17 +47,40 @@ const MoviesProvider = ({ children }) => {
         getFavoriteMovies()
 
         setMovies(data.results);
+
+        setLoading(false)
       } catch (error) {
         console.log(error);
       }
     };
+
+
+    const getGenres = async (genreID) =>{
+
+      let BASE_URL = `https://api.themoviedb.org/3`
+      let MORE_DATA = `&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreID}&with_watch_monetization_types=flatrate`
+      try {
+        setLoading(true)
+        const res = await fetch(`${BASE_URL}/discover/movie?${API_KEY}${MORE_DATA}`)
+        const data = await res.json()
+
+        // console.log(data)
+
+        setMovies(data.results);
+        setLoading(false)
+        
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
     const getFavoriteMovies = async() =>{
       try {
         const res = await fetch(`https://my-neftlix-default-rtdb.firebaseio.com/users/${user.localId}.json?auth=${user.idToken}`)
         const data = await res.json()
 
-        // console.log(data)
+        console.log(data, 'data')
+
         
         for(let i in data){
           
@@ -98,11 +126,9 @@ const MoviesProvider = ({ children }) => {
   
     useEffect(() => {
 
-      setLoading(true);
       // const SearchUrl = searchMovie? `https://api.themoviedb.org/3/search/movie?query=${searchMovie}&${API_KEY}` : `https://api.themoviedb.org/3/movie/popular?${API_KEY}`
       getData();
 
-      setLoading(false);
 
     }, [searchMovie]);
 
@@ -122,7 +148,11 @@ const MoviesProvider = ({ children }) => {
         favouriteMovies,
         setFavouriteMovies,
         pushFavouriteMovies,
-        deleteFavouriteMovie
+        deleteFavouriteMovie,
+        getData,
+        getGenres,
+        pushingFav,
+        setPushingFav
       }}
     >
       {children}

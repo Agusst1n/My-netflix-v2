@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 const Movie = ({ movie }) => {
-  const { isLogin, favouriteMovies, setFavouriteMovies,pushFavouriteMovies,deleteFavouriteMovie} = useContext(MoviesContext);
+  const { isLogin, loading, favouriteMovies, setFavouriteMovies,pushFavouriteMovies,deleteFavouriteMovie, pushingFav, setPushingFav} = useContext(MoviesContext);
 
   const img = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
 
@@ -22,38 +22,16 @@ const Movie = ({ movie }) => {
   
   const getFav = () =>{
 
-    let favList = favouriteMovies.map(fav=> fav.fav)
-    
     let favList2 = favouriteMovies.map(fav=> fav)
-    // console.log(favList2);
 
     let movieFav2 = favList2.filter(movieFav2=> movieFav2.fav.id == movie.id)
 
-    console.log(movieFav2);
-
-    // let favList2 = favouriteMovies.map(fav=> fav.idFirebase)
-    
-
-    // console.log(favouriteMovies)
-
-    let movieFav = favList.filter(movieFav=> movieFav.id == movie.id)
-
-
-    // if(movieFav[0]?.id == movie.id){
-    //   console.log('hay movie')
-
-    //   setFavourite(true)
-    // }else{
-    //   console.log('no hay');
-    //   setFavourite(false)
-    // }
-
     if(movieFav2[0]?.fav?.id == movie.id){
-      console.log('hay movie')
+      // console.log('hay movie')
       setMovieF(movieFav2[0].idFirebase)
       setFavourite(true)
     }else{
-      console.log('no hay');
+      // console.log('no hay');
       setFavourite(false)
     }
 
@@ -65,9 +43,11 @@ const Movie = ({ movie }) => {
       console.log('borrar');
       console.log(movieF, 'movieFav')
       await deleteFavouriteMovie(movieF)
+      setPushingFav(true)
     }else{
       console.log('agregar');
-      await pushFavouriteMovies({movieFav:movie.title, id:movie.id});
+      await pushFavouriteMovies({movieFav:movie.title, id:movie.id, img:`https://image.tmdb.org/t/p/w300${movie.poster_path}`});
+      setPushingFav(true)
     }
 
     
@@ -80,20 +60,22 @@ const Movie = ({ movie }) => {
   },[favouriteMovies])
 
   return (
-    <div className={styles.movie} data-id={movie.id}>
-      {isLogin && (
-        <div className={styles.fav_icon} onClick={handleFavourite}>
-          {favourite ? (
-            <MdFavorite color={'red'} size={30} />
-          ) : (
-            <MdFavorite size={30} />
-          )}
-        </div>
-      )}
-      <Link to={`/details/${movie.id}`}>
-        <img src={img} alt="" width={230} />
-      </Link>
-    </div>
+    <>
+      <div className={styles.movie} data-id={movie.id}>
+        {isLogin && (
+          <div className={styles.fav_icon} onClick={handleFavourite}>
+            {favourite ? (
+              <MdFavorite color={'red'} size={30} />
+            ) : (
+              <MdFavorite size={30} />
+            )}
+          </div>
+        )}
+        <Link to={`/details/${movie.id}`}>
+          <img src={img} alt="" width={230} />
+        </Link>
+      </div>
+    </>
   );
 };
 

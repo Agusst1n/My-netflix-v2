@@ -14,6 +14,7 @@ import avatarVideo from '../../assets/videos/avatar.mp4'
 
 import MoviesContext from "../../context/MovieContext";
 import AuthenticationContext from "../../context/AuthenticationContext";
+import Genres from "../../components/Genres/Genres";
 
 const Movies = () => {
 
@@ -78,6 +79,7 @@ const Movies = () => {
       <div className={styles.movies_container}>
         <div className={styles.movies_container_title}>
           <h2>Most popular movies</h2>
+          <Genres/>
         </div>
         <div className={styles.movies}>
           {loading?<Loading/> : movies.map((movie) => (

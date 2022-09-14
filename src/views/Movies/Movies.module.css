@@ -7,10 +7,16 @@
     /* padding: 40px 0; */
 }
 .movies_container_title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    width: 100%;
     position: absolute;
     top: 20px;
-    left: 60px;
+    left: 0px;
     color: rgba(255, 255, 255, 0.835);
+    padding: 0 60px;
 }
 .movies{
     width: 100%;

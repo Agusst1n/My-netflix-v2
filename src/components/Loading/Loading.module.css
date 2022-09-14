@@ -4,7 +4,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    outline: 1px solid red;
 }
 .spinner{
     animation: rotate 1s linear infinite;

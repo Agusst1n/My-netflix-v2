@@ -5,9 +5,9 @@ import { MoviesProvider } from './context/MovieContext'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <MoviesProvider>
       <App />
     </MoviesProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 )

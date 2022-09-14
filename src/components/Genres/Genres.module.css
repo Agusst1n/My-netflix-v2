@@ -1,0 +1,10 @@
+.genres_form{
+    width: 150px;
+    height: 30px;
+}
+
+.genres_select{
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+}

@@ -1,7 +1,7 @@
 .movie{
     position: relative;
-    height: 340px;
-    width: 230px;
+    height: 320px;
+    width: 210px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,4 +26,9 @@
     right: 5px;
     height: 25px;
     width: 25px;
+    cursor: pointer;
+}
+.fav_icon:hover{
+    opacity: 0.9;
+    transform: scale(1.1);
 }
