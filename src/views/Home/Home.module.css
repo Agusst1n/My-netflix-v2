@@ -6,7 +6,7 @@
 
 .home{
     /* outline: 1px solid red; */
-    height: calc(100vh - 70px);
+    height: 100vh;
     width: 100%;
     background-image: url('../../assets/images/bg.jpg');
     background-size: cover;
@@ -36,4 +36,24 @@
     align-items: center;
     gap: 2px;
     text-transform: uppercase;
+}
+
+@media (max-width: 566px) {
+    .description{
+        width: 300px;
+        left: 20px;
+    }
+}
+@media (max-width: 281px) {
+    .description{
+        width: 240px;
+        left: 10px;
+        font-size: 0.7rem;
+    }
+    .description img{
+        width: 200px;
+    }
+    .home{
+        overflow-x: hidden;
+    }
 }

@@ -13,7 +13,7 @@ const AuthenticationProvider = ({ children }) => {
   const navigate = useNavigate()
   
   const [user, setUser] = useState(localStorage.getItem('user') || {
-    // username: localStorage.getItem('username') || '',
+    username: '',
     email: '',
     password: '',
   })
@@ -32,6 +32,7 @@ const AuthenticationProvider = ({ children }) => {
       return;
     } else if (user.password) {
       loginData();
+      localStorage.setItem('username', user.username);
     } else {
       console.log('los campos no coinciden');
     }
@@ -80,6 +81,7 @@ const AuthenticationProvider = ({ children }) => {
     } else if (user.password === user.password2) {
       if(user.password.length >=6){
         registerData();
+        localStorage.setItem('username', user.username);
       }else{
         console.log('La password debe ser mayor a 6 caracteres')
       }

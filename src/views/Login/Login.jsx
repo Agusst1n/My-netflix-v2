@@ -12,6 +12,7 @@ const Login = () => {
     <div className={styles.login}>
         <h1>Login</h1>
         <form className={styles.form} onSubmit={handleLogin}>
+            <input type="text" placeholder='Username' name='username' onChange={handleChange}/>
             <input type="text" placeholder='Email' name='email' onChange={handleChange}/>
             <input type="text" placeholder='Password' name='password' onChange={handleChange}/>
             <button type="submit">Enviar</button>

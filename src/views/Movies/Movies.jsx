@@ -15,10 +15,11 @@ import avatarVideo from '../../assets/videos/avatar.mp4'
 import MoviesContext from "../../context/MovieContext";
 import AuthenticationContext from "../../context/AuthenticationContext";
 import Genres from "../../components/Genres/Genres";
+import Search from "../../components/Search/Search"
 
 const Movies = () => {
 
-  const {movies,setMovies, loading} = useContext(MoviesContext)
+  const {movies,setMovies, loading, getData, searchMovie,handleChange} = useContext(MoviesContext)
   const {setInHome} = useContext(AuthenticationContext)
 
   const navigate = useNavigate()
@@ -45,9 +46,10 @@ const Movies = () => {
       if(location.pathname.includes('/movies')){
         setInHome(false)
         // console.log(location, 'location');
+        getData();
       }
     // }
-  },[])
+  },[searchMovie])
 
 
   return (
@@ -77,6 +79,7 @@ const Movies = () => {
       </div>
 
       <div className={styles.movies_container}>
+        <input type="text" placeholder='Search' className={styles.search} onChange={handleChange}/>
         <div className={styles.movies_container_title}>
           <h2>Most popular movies</h2>
           <Genres/>

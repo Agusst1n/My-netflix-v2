@@ -1,0 +1,24 @@
+.fav_movie{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    width: 100%;
+    background-color: #272727;
+}
+
+.fav_img{
+    width: 60px;
+}
+
+.fav_title_button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
+    width: calc(100% - 60px);
+}
+
+.fav_icon{
+    cursor: pointer;
+}

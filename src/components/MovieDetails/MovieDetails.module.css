@@ -1,15 +1,15 @@
 .movieDetails_container{
-    min-height: calc(100vh - 70px);
+    min-height: 100vh;
     background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
 }
 
 .movieDetails{
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -58,16 +58,79 @@
 .review{
     width: 100%;
     min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     /* outline: 1px solid violet; */
 }
 
 .containReview{
-    height: 60px;
-    /* outline: 1px solid blue; */
+    position: relative;
+    height: 100px;
+    width: 650px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 10px;
+    margin-left: 50px;
+    background-color: #272727;
 }
 .imgUser{
-    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.review_comment{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+}
+.button_delete{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+@media (max-width:708px){
+    .input_comment{
+        height: 30px;
+        width: 500px;
+    }
+    .containReview{
+        width: 500px;
+    }
+}
+
+@media (max-width:564px){
+    .input_comment{
+        height: 30px;
+        width: 300px;
+    }
+    .containReview{
+        width: 300px;
+        margin-left: 20px;
+    }
+    .form{
+        /* outline: 1px solid blue; */
+        margin-left: 20px;
+    }
+    .titleComments{
+        margin-left: 20px;
+    }
+}
+
+.similarMovies_container{
+    display: flex;
+    width: 100%;
+    padding: 0 10px;
+    height: 260px;
+    /* outline: solid 1px red; */
+    overflow-x: scroll;
+    overflow-y: hidden;
+    gap: 10px;
 }

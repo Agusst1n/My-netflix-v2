@@ -4,3 +4,15 @@
     width: 200px;
     outline: 1px solid white;
 }
+
+@media (max-width:500px){
+    .search{
+      display: none;
+    }
+}
+@media (max-width:280px){
+    .search{
+        margin-left: 10px;
+    }
+}
+

@@ -24,6 +24,9 @@ const MoviesProvider = ({ children }) => {
     //Aca adentro van a estar todas las peliculas a las que guardemos en favoritos
     const [favouriteMovies, setFavouriteMovies] = useState([])
 
+    //Aca adentro van a estar todas las peliculas similares a la que eligio el usuario
+    const [similarMovies, setSimilarMovies] = useState([])
+
     const favs = []
 
     const [pushingFav, setPushingFav] = useState(false)
@@ -123,15 +126,28 @@ const MoviesProvider = ({ children }) => {
         console.log(error)
       }
     }
+
+    const handleChange = (e)=>{
+      setSearchMovie(e.target.value)
+    }
   
-    useEffect(() => {
 
-      // const SearchUrl = searchMovie? `https://api.themoviedb.org/3/search/movie?query=${searchMovie}&${API_KEY}` : `https://api.themoviedb.org/3/movie/popular?${API_KEY}`
-      getData();
+    const getSimilarMovies = async (id) =>{
 
+      // let BASE_URL = `https://api.themoviedb.org/3/movie//`
+      // let API_KEY = `similar?api_key=3d9d528c10bd10aab1dcbcd5f1f8f9bf`
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/movie//${id}/similar?api_key=3d9d528c10bd10aab1dcbcd5f1f8f9bf&language=en-US&page=1`)
+        const data = await res.json()
 
-    }, [searchMovie]);
+        console.log(data.results, 'similar');
+        let similars = data.results.filter((movie)=> movie.id != id)
+        setSimilarMovies(similars)
 
+      } catch (error) {
+        
+      }
+    }
 
   return (
     <MoviesContext.Provider
@@ -152,7 +168,11 @@ const MoviesProvider = ({ children }) => {
         getData,
         getGenres,
         pushingFav,
-        setPushingFav
+        setPushingFav,
+        handleChange,
+        getSimilarMovies,
+        similarMovies,
+        setSimilarMovies
       }}
     >
       {children}
