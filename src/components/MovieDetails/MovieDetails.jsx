@@ -5,13 +5,17 @@ import MoviesContext from '../../context/MovieContext'
 
 import iconUser from '../../assets/images/iconUser.png'
 import { AiOutlineCloseCircle } from 'react-icons/ai';
+// import { BiCaretLeft,BiCaretRight } from "react-icons/bi";
 
 
 import styles from './MovieDetails.module.css'
 import AuthenticationContext from '../../context/AuthenticationContext'
 import SimilarMovie from '../SimilarMovie/SimilarMovie'
 
+
+
 const MovieDetails = () => {
+
 
   const location = useLocation()
   const {id} = useParams()
@@ -40,11 +44,6 @@ const MovieDetails = () => {
     }
   }
 
-  // const getById = () =>{
-  //   const movieActual = movies?.filter(movie=> movie.id == id)
-  //   setMovieActual(movieActual);
-  // }
-
   const getReview = () =>{
     const reviewActual = reviews?.filter(review => review.idMovie == id)
     setReviewActual(reviewActual);
@@ -64,15 +63,7 @@ const MovieDetails = () => {
   }, [movies, reviews, id])
   
 
-  // console.log(movies, 'moviees');
-  // console.log(movieActual, 'movieActual');
-  // console.log(reviews, 'reviews');
-
   const img = `https://image.tmdb.org/t/p/w300${movieActual?.poster_path}`  
-
-  // const handleChange = (e) => {
-  //   setReviews(e.target.value);
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -110,12 +101,13 @@ const MovieDetails = () => {
       </div>
 
       {/* Similar movies */}
+      <div className={styles.blobTOP}></div>
       <div className={styles.similarMovies_container}>
-        {
-          similarMovies.map((movie)=><SimilarMovie movie={movie} key={movie.id}/>)
-        }
-          
+          {
+            similarMovies.map((movie)=><SimilarMovie movie={movie} key={movie.id}/>)
+          }
       </div>
+      <div className={styles.blobDOWN}></div>
 
       {/* Movie Comments */}
 

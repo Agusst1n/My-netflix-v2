@@ -1,3 +1,6 @@
 .SimilarMovie{
     height: 250px;
 }
+.SimilarMovie:hover{
+    opacity: 0.8;
+}
