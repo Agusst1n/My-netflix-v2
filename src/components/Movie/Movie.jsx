@@ -3,61 +3,65 @@ import styles from './Movie.module.css';
 
 //import Link react-router-dom
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import MoviesContext from '../../context/MovieContext';
 
-import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { MdFavorite } from 'react-icons/md';
 
 const Movie = ({ movie }) => {
-  const { isLogin, loading, favouriteMovies, setFavouriteMovies,pushFavouriteMovies,deleteFavouriteMovie, pushingFav, setPushingFav} = useContext(MoviesContext);
+  const {
+    isLogin,
+    favouriteMovies,
+    pushFavouriteMovies,
+    deleteFavouriteMovie,
+    pushingFav,
+    setPushingFav
+  } = useContext(MoviesContext);
 
   const img = `https://image.tmdb.org/t/p/w300${movie.poster_path}`;
 
   const [favourite, setFavourite] = useState(false);
 
-  const [movieF, setMovieF] = useState()
+  const [movieF, setMovieF] = useState();
 
-  
-  const getFav = () =>{
+  const getFav = () => {
+    let favList2 = favouriteMovies.map((fav) => fav);
 
-    let favList2 = favouriteMovies.map(fav=> fav)
+    let movieFav2 = favList2.filter(
+      (movieFav2) => movieFav2.fav.id == movie.id
+    );
 
-    let movieFav2 = favList2.filter(movieFav2=> movieFav2.fav.id == movie.id)
-
-    if(movieFav2[0]?.fav?.id == movie.id){
-      // console.log('hay movie')
-      setMovieF(movieFav2[0].idFirebase)
-      setFavourite(true)
-    }else{
-      // console.log('no hay');
-      setFavourite(false)
+    if (movieFav2[0]?.fav?.id == movie.id) {
+      setMovieF(movieFav2[0].idFirebase);
+      setFavourite(true);
+    } else {
+      setFavourite(false);
     }
-
-  }
+  };
 
   const handleFavourite = async () => {
     setFavourite(!favourite);
-    if(favourite){
+    if (favourite) {
       console.log('borrar');
-      console.log(movieF, 'movieFav')
-      await deleteFavouriteMovie(movieF)
-      setPushingFav(true)
-    }else{
+      console.log(movieF, 'movieFav');
+      await deleteFavouriteMovie(movieF);
+      setPushingFav(true);
+    } else {
       console.log('agregar');
-      await pushFavouriteMovies({movieFav:movie.title, id:movie.id, img:`https://image.tmdb.org/t/p/w300${movie.poster_path}`});
-      setPushingFav(true)
+      await pushFavouriteMovies({
+        movieFav: movie.title,
+        id: movie.id,
+        img: `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+      });
+      setPushingFav(true);
     }
 
-    
     console.log(movie.title);
   };
 
-
-  useEffect(()=>{
-    getFav()
-  },[favouriteMovies])
+  useEffect(() => {
+    getFav();
+  }, [favouriteMovies]);
 
   return (
     <>

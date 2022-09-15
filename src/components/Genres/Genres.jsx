@@ -2,27 +2,30 @@ import React from 'react';
 import { useContext } from 'react';
 import MoviesContext from '../../context/MovieContext';
 
-import styles from './Genres.module.css'
-
+import styles from './Genres.module.css';
 
 const Genres = () => {
+  const { getGenres, getData } = useContext(MoviesContext);
 
-  const {getGenres,getData} = useContext(MoviesContext)
-
-  const chooseGenre = (e) =>{
-    console.log(e.target.value)
-    if(e.target.value == "popular"){
-        getData()
-    }else{
-        getGenres(e.target.value)
+  const chooseGenre = (e) => {
+    console.log(e.target.value);
+    if (e.target.value == 'popular') {
+      getData();
+    } else {
+      getGenres(e.target.value);
     }
-  }
+  };
 
   return (
     <form className={styles.genres_form}>
-      <select name="" id="" className={styles.genres_select} onClick={chooseGenre}>
-        <option value="popular">Most popular</option >
-        <option value="28">Action</option >
+      <select
+        name=""
+        id=""
+        className={styles.genres_select}
+        onClick={chooseGenre}
+      >
+        <option value="popular">Most popular</option>
+        <option value="28">Action</option>
         <option value="12">Adventure</option>
         <option value="16">Animation</option>
         <option value="35">Comedy</option>

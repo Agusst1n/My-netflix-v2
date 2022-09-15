@@ -10,8 +10,8 @@ const Register = () => {
 
   return (
     <div className={styles.register}>
-        <h1>Register</h1>
         <form className={styles.form} onSubmit={handleRegister}>
+          <h2>Register</h2>
             <input type="text" placeholder='Username' name='username' onChange={handleChange}/>
             <input type="text" placeholder='Email' name='email' onChange={handleChange}/>
             <input type="text" placeholder='Password' name='password' onChange={handleChange}/>

@@ -11,8 +11,6 @@ const Favourite = (data) => {
   const { idFirebase } = data.data;
   const { img, movieFav } = data.data.fav;
 
-  console.log(data.data);
-
   const deleteMovie = async (id) => {
     await deleteFavouriteMovie(id);
     setPushingFav(true);

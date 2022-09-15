@@ -7,19 +7,25 @@ import Search from '../Search/Search';
 import { Link } from 'react-router-dom';
 //Router dom
 import { useNavigate } from 'react-router-dom';
-import { useContext,useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import MoviesContext from '../../context/MovieContext';
 import AuthenticationContext from '../../context/AuthenticationContext';
 
 //React ICONS
 
-import { FaAlignRight } from "react-icons/fa";
-// import { GrClose } from "react-icons/gr";
+import { FaAlignRight } from 'react-icons/fa';
 import Favourite from '../Favourite/Favourite';
 
 const Navbar = () => {
-  const { isLogin, setIsLogin, favouriteMovies , getData, pushingFav, setPushingFav} = useContext(MoviesContext);
-  const [navbarON, setNavbarON] = useState(false)
+  const {
+    isLogin,
+    setIsLogin,
+    favouriteMovies,
+    getData,
+    pushingFav,
+    setPushingFav
+  } = useContext(MoviesContext);
+  const [navbarON, setNavbarON] = useState(false);
   const { inHome } = useContext(AuthenticationContext);
 
   const navigate = useNavigate();
@@ -32,20 +38,18 @@ const Navbar = () => {
     return;
   };
 
-  const navbarVisibility = () =>{
-    setNavbarON(!navbarON)
-  }
+  const navbarVisibility = () => {
+    setNavbarON(!navbarON);
+  };
 
-
-
-  useEffect(()=>{
-    if(pushingFav){
-      getData()
-      setPushingFav(false)
-    }else{
+  useEffect(() => {
+    if (pushingFav) {
+      getData();
+      setPushingFav(false);
+    } else {
       console.log('es false');
     }
-  },[pushingFav])
+  }, [pushingFav]);
 
   return (
     <div className={styles.container}>
@@ -71,31 +75,45 @@ const Navbar = () => {
             Close sesion
           </button>
           <div className={styles.menu_icon} onClick={navbarVisibility}>
-            <FaAlignRight size={25}/>
+            <FaAlignRight size={25} />
           </div>
           <div className={navbarON ? styles.sidebarON : styles.sidebarOFF}>
-              <div className={styles.sidebar_menu_icon} onClick={navbarVisibility}>
-                <FaAlignRight size={25}/>
+            <div
+              className={styles.sidebar_menu_icon}
+              onClick={navbarVisibility}
+            >
+              <FaAlignRight size={25} />
+            </div>
+            <div className={styles.sidebar_yourFavsMovies}>
+              <Link to="/home" className={styles.your_favoritesLink}>
+                Home
+              </Link>
+              <Link to="/movies" className={styles.your_favoritesLink}>
+                Movies
+              </Link>
+              <button
+                onClick={handleClose}
+                className={styles.your_favoriteClose}
+              >
+                Close sesion
+              </button>
+              <div className={styles.fav_name}>
+                <p>Yours favs movies</p>
               </div>
-              <div className={styles.sidebar_yourFavsMovies}>
-                  <Link to="/home" className={styles.your_favoritesLink}>Home</Link>
-                  <Link to="/movies" className={styles.your_favoritesLink}>Movies</Link>
-                  <button onClick={handleClose} className={styles.your_favoriteClose}>
-                    Close sesion
-                  </button>                  
-                  <div className={styles.fav_name}>
-                    <p>Yours favs movies</p>
-                  </div>
-                  {
-                    favouriteMovies.map((movie)=><Favourite data={movie} key={movie.fav.id}/>)
-                  }
-              </div>
+              {favouriteMovies.map((movie) => (
+                <Favourite data={movie} key={movie.fav.id} />
+              ))}
+            </div>
           </div>
         </div>
       ) : (
         <div className={styles.account_links_container}>
-          <Link to="/" className={styles.account_links}>Login</Link>
-          <Link to="/register" className={styles.account_links}>Register</Link>
+          <Link to="/" className={styles.account_links}>
+            Login
+          </Link>
+          <Link to="/register" className={styles.account_links}>
+            Register
+          </Link>
         </div>
       )}
     </div>
