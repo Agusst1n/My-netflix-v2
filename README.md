@@ -1,5 +1,5 @@
-# Recruiting APP
-Esta es una aplicacion la cual esta pensada para facilitar el reclutamiento, solo basta con que el candidato entre a la aplicacion y se grabe respondiendo las preguntas que el reclutador crea convenientes.
+# Movies APP
+Esta es una aplicacion de peliculas, la cual te proporciona los titulos y descripciones de las peliculas mas populares del momento, tambien podes buscar por nombre, genero y si te gusto alguna la podes agregar a favoritos para verla despues.
 
 ## Reconstruir los modulos levantar el proyecto en Local
 
@@ -10,9 +10,12 @@ npm run dev
 ```
 
 ## Features
-- Tiene una guia inicial
 - Facil de entender
 - Rapida
+- Buscador de peliculas
+- Agregar a favoritos
+- Seccion de favoritos
+- Detalles de las peliculas
 
 
 ## Screenshots
@@ -28,4 +31,4 @@ npm run dev
 
 
 ## Demo
-https://beautiful-cannoli-2c38d0.netlify.app/
+https://jocular-strudel-531eec.netlify.app/
