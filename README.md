@@ -31,4 +31,4 @@ npm run dev
 
 
 ## Demo
-https://jocular-strudel-531eec.netlify.app/
+https://jocular-strudel-531eec.netlify.app/movies
