@@ -25,7 +25,6 @@ const AuthenticationProvider = ({ children }) => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    console.log(user);
 
     if (Object.values(user).includes('')) {
       console.log('campos vacios');
@@ -105,6 +104,8 @@ const AuthenticationProvider = ({ children }) => {
     );
 
     const data = await res.json();
+
+    console.log(data, 'data register')
 
     localStorage.setItem('user', JSON.stringify(data));
     localStorage.setItem('username', user.username);

@@ -8,7 +8,6 @@ const Genres = () => {
   const { getGenres, getData } = useContext(MoviesContext);
 
   const chooseGenre = (e) => {
-    console.log(e.target.value);
     if (e.target.value == 'popular') {
       getData();
     } else {

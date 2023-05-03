@@ -28,7 +28,7 @@ const Movie = ({ movie }) => {
     let favList2 = favouriteMovies.map((fav) => fav);
 
     let movieFav2 = favList2.filter(
-      (movieFav2) => movieFav2.fav.id == movie.id
+      (movieFav2) => movieFav2?.fav?.id == movie.id
     );
 
     if (movieFav2[0]?.fav?.id == movie.id) {
@@ -42,12 +42,9 @@ const Movie = ({ movie }) => {
   const handleFavourite = async () => {
     setFavourite(!favourite);
     if (favourite) {
-      console.log('borrar');
-      console.log(movieF, 'movieFav');
       await deleteFavouriteMovie(movieF);
       setPushingFav(true);
     } else {
-      console.log('agregar');
       await pushFavouriteMovies({
         movieFav: movie.title,
         id: movie.id,
@@ -56,7 +53,6 @@ const Movie = ({ movie }) => {
       setPushingFav(true);
     }
 
-    console.log(movie.title);
   };
 
   useEffect(() => {

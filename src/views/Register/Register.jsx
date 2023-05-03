@@ -14,7 +14,7 @@ const Register = () => {
           <h2>Register</h2>
             <input type="text" placeholder='Username' name='username' onChange={handleChange}/>
             <input type="text" placeholder='Email' name='email' onChange={handleChange}/>
-            <input type="text" placeholder='Password' name='password' onChange={handleChange}/>
+            <input type="text" placeholder='Password >= 6 characters' name='password' onChange={handleChange}/>
             <input type="text" placeholder='Repeat password' name='password2' onChange={handleChange}/>
             <button type="submit">Enviar</button>
         </form>

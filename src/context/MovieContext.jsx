@@ -78,12 +78,12 @@ const MoviesProvider = ({ children }) => {
 
   const getFavoriteMovies = async () => {
     try {
+
       const res = await fetch(
         `https://my-neftlix-default-rtdb.firebaseio.com/users/${user.localId}.json?auth=${user.idToken}`
       );
       const data = await res.json();
 
-      console.log(data, 'data');
 
       for (let i in data) {
         favs.push({
@@ -112,6 +112,10 @@ const MoviesProvider = ({ children }) => {
           })
         }
       );
+
+      const data = await res.json();
+
+      console.log( data, 'data push')
     } catch (error) {
       console.log(error);
     }

@@ -25,7 +25,6 @@ const MovieDetails = () => {
         `https://api.themoviedb.org/3/movie/${id}?api_key=3d9d528c10bd10aab1dcbcd5f1f8f9bf&language=en-US`
       );
       const data = await res.json();
-      console.log(data, 'movie actual');
 
       setMovieActual(data);
     } catch (error) {}
@@ -36,7 +35,6 @@ const MovieDetails = () => {
     getSimilarMovies(id);
     if (location.pathname.includes('/details')) {
       setInHome(true);
-      console.log(location, 'location');
     }
   }, [movies, reviews, id]);
 

@@ -47,7 +47,6 @@ const Navbar = () => {
       getData();
       setPushingFav(false);
     } else {
-      console.log('es false');
     }
   }, [pushingFav]);
 
@@ -100,8 +99,8 @@ const Navbar = () => {
               <div className={styles.fav_name}>
                 <p>Yours favs movies</p>
               </div>
-              {favouriteMovies.map((movie) => (
-                <Favourite data={movie} key={movie.fav.id} />
+              {favouriteMovies?.map((movie) => (
+                <Favourite data={movie} key={movie.fav?.id} />
               ))}
             </div>
           </div>
